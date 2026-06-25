@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>장바구니 총합 계산</title>
+</head>
+<body>
+
+<h2>장바구니</h2>
+
+<!--
+
+상품명, 가격, 수량을 입력받아 추가 버튼을 누르면 장바구니 목록에 추가한다.
+추가할 때마다 전체 상품의 총 금액을 계산하여 출력하시오.
+
+var cart = [];
+
+각 상품은 객체 형태로 저장하시오.
+
+{
+    name: "키보드",
+    price: 30000,
+    count: 2
+}
+
+-->
+
+상품명 :
+<input type="text" id="productName">
+<br><br>
+
+가격 :
+<input type="number" id="price">
+<br><br>
+
+수량 :
+<input type="number" id="count">
+<br><br>
+
+<button onclick="addCart();">추가</button>
+
+<hr>
+
+<h3>장바구니 목록</h3>
+<div id="cartList"></div>
+
+<h3>총 금액 : <span id="totalPrice">0</span>원</h3>
+
+<script>
+var cart = [];
+
+function addCart() {
+
+}
+</script>
+
+</body>
+</html>
