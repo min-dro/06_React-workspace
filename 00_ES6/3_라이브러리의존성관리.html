@@ -99,7 +99,7 @@
         <br>
 
         * VSCode 상에서 간단히 웹서버를 구축할 수 있다!! <br>
-        - VS챙ㄷ 마켓플레이스에서 "live server" 확장팩을 설치한다.
+        - VSCode 마켓플레이스에서 "live server" 확장팩을 설치한다.
     </p>
 
     <br>
@@ -111,7 +111,7 @@
     <script type="module">
         // import { sayHello } from "./resources/js/sayModule.js"
         // > sayModule.js 파일로부터 sayHello 라는 함수를 가져다 쓰겠다. (import)
-        // > ./ 현재 이 파일이 딤겨있는 폴더
+        // > ./ : 현재 이 파일이 딤겨있는 폴더
 
         // import { sayBye } from "./resources/js/sayModule.js";
         // > sayModule.js 파일로부터 sayBye 라는 함수를 가져다 쓰겠다. (import)
@@ -139,11 +139,11 @@
                 bye : function() {},
                 n : 1
             };
-            객체 단위로 모듈이 전달된다!! 별칭이 곧 객체명이 됨)
+            객체 단위로 모듈이 전달된다!! (별칭이 곧 객체명이 됨)
 
             - export 시
               별칭이 안붙었을 경우 속성명이 곧 변수명, 함수명으로 셋팅됨!!
-              별칭이 붙었을 경우
+              별칭이 붙었을 경우 속성명이 곧 별칭으로 셋팅됨!!
         */
        
         document.querySelector("#btn3").onclick = () => {
@@ -174,8 +174,27 @@
 
     <h3>* 클래스 단위도 export, import 할 수 있음!!</h3>
 
+    <button id="btn6">학생 정보 출력</button>
 
+    <script type="module">
+        // import { Student } from "./resources/js/Student.js";
+        // > Student.js 파일로부터 Student 클래스를 가져다 쓰겠다.
 
+        // export default 형식으로 내보낸 경우..
+        // import Student from "./resources/js/Student.js";
+        // > export default 로 내보낸 경우 중괄호 없이 기술!!
+
+        import S from "./resources/js/Student.js";
+        // > export default 로 내보낸 경우 import 시 내 마음대로 이름을 붙여서 가져다 쓸 수 있다!!
+
+        document.querySelector("#btn6").onclick = () => {
+
+            // let hong = new Student("홍길동", 20, "H강의장");
+            let hong = new S("홍길동", 20, "H강의장");
+
+            alert(hong /* .toString() */);
+        };
+    </script>
 
 </body>
 </html>

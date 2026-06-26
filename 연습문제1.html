@@ -43,11 +43,30 @@ var boards = [
 ];
 
 function printAll() {
-
+    let boardList = document.getElementById("boardList");
+    let resultStr = "";
+    for(let i = 0; i < boards.length; i++) {
+        resultStr += boards[i] + "<br>";
+    }
+    boardList.innerHTML = resultStr;
 }
 
 function searchBoard() {
 
+    let keyword = document.getElementById("keyword").value;
+    let boardList = document.getElementById("boardList");
+    if(keyword == "") {
+        printAll();
+    } else {
+        let resultStr = "";
+
+        for(let i = 0; i < boards.length; i++) {
+            if(boards[i].includes(keyword)) {
+                resultStr += boards[i] + "<br>";
+            }
+        }
+        boardList.innerHTML = resultStr;
+    }
 }
 
 printAll();
