@@ -50,7 +50,21 @@ var cart = [];
 var cart = [];
 
 function addCart() {
-
+    let productName = document.getElementById("productName").value;
+    let price = Number(document.getElementById("price").value);
+    let count = Number(document.getElementById("count").value);
+    let cartList = document.getElementById("cartList");
+    let totalPrice = document.getElementById("totalPrice");
+    let resultStr = "";
+    let resultPrice = 0;
+    cart.push({ name: productName, price: price, count: count });
+    
+    for(let i = 0; i < cart.length; i++) {
+        resultStr += cart[i].name + " " + cart[i].count + "개<br>";
+        resultPrice += cart[i].price * cart[i].count;   
+    }
+    cartList.innerHTML = resultStr;
+    totalPrice.innerHTML = resultPrice;
 }
 </script>
 

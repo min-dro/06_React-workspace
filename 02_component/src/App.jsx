@@ -13,6 +13,9 @@ import MyComponent1 from "./MyComponent1.jsx";
 import MyComponent2 from './MyComponent2.jsx';
 import MyComponent3 from './MyComponent3.jsx'
 
+import MyComponent4 from './MyComponent4.jsx'
+// > MyComponent4.jsx 파일로부터 MyComponent4 라는 클래스 (컴포넌트) 를 가져다 쓰겠다. (import)
+
 function App() {
 
   // 실행할 구문
@@ -24,6 +27,42 @@ function App() {
   memberList.push({ name : "고영희", age : 54 }); // [2]
   // > 이 데이터들을 가지고 반복문을 이용해서 memberList 의 데이터들을
   //   각각 MyComponent3 호출 구문으로 옮겨줄 예정!!
+
+  // 방법1) 직접 반복문을 돌리는 방법
+  // 기존 데이터만 담겨있던 배열 (memberList) 의 내용을 반복문을 통해
+  // 데이터들을 각각 MyComponent3 요소로 감싸는 형식으로 재가공
+  // > 재가공된 것들을 담을 수 있는 배열 하나 더 생성하기!!
+  /*
+  let myComponent3List = [];
+
+  for(let i = 0; i < memberList.length; i++) {
+
+    myComponent3List.push(<MyComponent3 key= { i }
+                                        userName={ memberList[i].name }
+                                        age={ memberList[i].age } />);
+  }
+  */
+
+  // 방법2) map 함수를 이용한 방법
+  // 기존 데이터만 담겨있던 배열 (memberList) 의 내용을 map 함수를 통해
+  // 데이터들을 각각 MyComponent3 요소로 감싸는 형식으로 재가공
+  // > 재가공된 것들을 담을 수 있는 배열 하나 더 생성하기!!
+  /*
+  let myComponent3List = memberList.map((item, index) => {
+
+    return (<MyComponent3 key={ index }
+                          userName={ item.name }
+                          age={ item.age } />)
+  });
+  */
+
+  // > 반복을 통해 다량의 컴포넌트를 생성할 경우
+  //   반드시 컴포넌트 마다 key 속성을 "겹치지 않게" 각각의 컴포넌트에 부여해야한다!!
+  // > 왜? Virtual DOM 이 틀린 부분을 찾아서 재렌더링 할 때
+  //       성능상으로 빠르게 탐색할 수 하기 위해
+
+  // 이 시점 기준으로
+  // myComponent3List = [<MyComponent3/>, <MyComponent3/>, <MyComponent3/>];
 
   // return 구문
   return (
@@ -144,8 +183,33 @@ function App() {
       */}
 
       <ul>
-        {/* 반복문 예정 */}
+        { /* myComponent3List */ }
+        {/*
+          컴포넌트들이 차곡차곡 담겨있는 배열만 잘 만들어 주면 된다!!
+          (JSX 사이에 {} 안에 컴포넌트들이 담겨있는 배열명을 써주면 알아서 출력됨)
+        */}
       </ul>
+
+      <ul>
+        { memberList.map((item, index) => {
+
+            return(<MyComponent3 key={ index }
+                                 userName={ item.name }
+                                 age={ item.age } />);
+        }) }
+        {/*
+          방법3) {} 안에 직접 map 함수를 호출하는 방법
+          굳이 변수를 거치지 않고 {} 안에 직접 map 함수를 호출해서
+          map 함수에 의해 최종적으로 리턴된 배열을 바로 출력도 가능하다!!
+        */}
+      </ul>
+
+      <br/>
+      <hr/>
+
+      <h3>4. 클래스형 컴포넌트 만들기</h3>
+
+      <MyComponent4 boardTitle="제목입니다!" boardContent="내용이 어쩌고 저쩌고.." />
 
     </div>
   )

@@ -48,15 +48,33 @@ var menus = [
 var orders = [];
 
 function printMenu() {
-
+    let menuList = document.getElementById("menuList");
+    let resultStr = "";
+    for(let i = 0; i < menus.length; i++) {
+        resultStr += menus[i].name + " <button onclick='orderMenu(" + i + ")'>주문</button><br>";
+    }
+    menuList.innerHTML = resultStr;
+    
 }
 
 function orderMenu(index) {
-
+    let orderList = document.getElementById("orderList");
+    let totalPrice = document.getElementById("totalPrice");
+    let resultStr = ""
+    let resultPrice = 0;
+    orders.push(menus[index]);
+    for(let i = 0; i < orders.length; i++){
+        resultStr += orders[i].name + "<br>";
+        resultPrice += orders[i].price;
+    }
+    orderList.innerHTML = resultStr;
+    totalPrice.innerHTML = resultPrice; 
+    printOrder();
 }
 
 function printOrder() {
-
+    let orderCount = document.getElementById("orderCount");
+    orderCount.innerHTML = orders.length;
 }
 
 printMenu();
