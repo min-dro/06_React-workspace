@@ -4,119 +4,70 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 
+import ControlledComponent1 from "./ControlledComponent1";
+import ControlledComponent2 from "./ControlledComponent2";
+import ControlledComponent3 from "./ControlledComponent3";
+import ControlledComponent4 from "./ControlledComponent4";
+
 function App() {
-  const [count, setCount] = useState(0)
+  
+  // 실행할 구문
 
+  // return 구문
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div>
 
-      <div className="ticks"></div>
+      <h1>Controlled Component (제어 컴폰너트)</h1>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <p>
+        - React 의 State 변수가 입력양식요소 (input, textarea, select 등) 의 입력값을
+          직접 "제어 (관리)" 하는 방식 <br/>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+        <br/>
+        - React 에서 입력값을 처리하는 방식 <br/>
+        1. Uncontrolled (비제어 방식) : 입력양식요소의 입력값을 DOM 을 통해 직접 조작하는 방식 - 기존의 방법 <br/>
+           사용자가 입력양식요소에 입력한 값을
+           document.getElementById("id").value 를 통해 직접 값을 꺼내오는 방식
+        <br/>
+        2. Controlled (제어 방식) : State 가 입력양식요소의 입력값을 저장하고 관리하는 방식 <br/>
+                                   입력값을 매번 State 형 변수에 담고, 그 값을 입력양식요소의 value 로 출력 <br/>
+        <br/>
+
+        - React 에서는 Controlled 방식을 권장!! (왠만해서는 직접 DOM 을 건들지 말자) <br/>
+        - 입력값을 React State 가 항상 알고 있으므로 입력값 처리가 훨씬 쉬워진다!!
+      </p>
+
+      <br/>
+      <hr/>
+
+      <h3>1. Uncontrolled 방식과 Controlled 방식의 차이</h3>
+
+      <ControlledComponent1 />
+
+      <br/>
+      <hr/>
+
+      <h3>2. 여러 입력 요소 제어하기 (text, password, textarea)</h3>
+
+      <ControlledComponent2 />
+
+      <br/>
+      <hr/>
+
+      <h3>3. radio, checkbox 제어하기</h3>
+
+      <ControlledComponent3 />
+
+      <br/>
+      <hr/>
+
+      <h3>4. select, option 제어하기</h3>
+
+      <ControlledComponent4 />
+
+    </div>
   )
 }
 
+// 내보내기
 export default App
