@@ -14,6 +14,9 @@ import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import MemberEnrollFormComponent from "./MemberEnrollFormComponent";
 import LoginFormComponent from "./LoginFormComponent";
 
+import TestComponent1 from "./TestComponent1";
+import TestComponent2 from "./TestComponent2";
+
 function App() {
 
   // 실행할 코드
@@ -67,6 +70,10 @@ function App() {
     navigate("/member/loginform");
     // > URL 주소가 이동되고, 이때 화면이 깜빡거리지 않음!!
   };
+
+  const arr = [];
+  arr.push({ userId : "", userPwd : "", userName : "", email : "", gender : "" });
+  const [user, setUser] = useState(arr);
 
   // return 구문
   return (
@@ -154,7 +161,7 @@ function App() {
       <h3>2. Link 컴포넌트 없이 URL 주소 요청하기 (화면 깜빡임 없이)</h3>
 
       {/*
-        * 기존의 html, js 에서...
+        - 기존의 html, js 에서...
 
         <a href="/myweb/member/logout">로그아웃</a> (O)
 
@@ -184,9 +191,65 @@ function App() {
       <br/>
 
       <Routes>
-        <Route path="/member/enrollForm" element={ <MemberEnrollFormComponent /> } />
-        <Route path="/member/loginForm" element={ <LoginFormComponent /> } />
+        <Route path="/member/enrollForm" element={ <MemberEnrollFormComponent user={ user } setUser={ setUser } /> } />
+        <Route path="/member/loginForm" element={ <LoginFormComponent user={ user } /> } />
       </Routes>
+
+      <br/>
+      <hr/>
+
+      <h3>3. 화면 깜빡임 없이 URL 주소 전환 시 전달값 넘기고 받기</h3>
+
+      <p>
+        - 마찬가지로 navigate 함수를 통해 URL 요청 시 전달값을 다른 컴포넌트로 넘길 수 없다. <br/>
+
+        {/*
+          [ 표현법 ]
+
+          // 우선 navigate 함수를 useNavigate 함수로 얻어낸다.
+
+          1. 전달값이 없을 경우
+          navigate("요청할URL주소");
+
+          2_1. 전달값이 있을 경우 - url 주소 상에 전달값을 노출시키고 싶지 않을 때
+          navigate("요청할URL주소", {state : {키 : 밸류, 키 : 밸류, ...}});
+          - 단, 전달값은 {state : {여기}} 에 적는다!!
+
+          2_2. 전달값이 있을 경우 - url 주소 상에 전달값을 노출시켜도 상관 없을 때
+          navigate("요청할URL주소");
+          - 단, URL 주소 내에 Path Variable 방식으로 전달값을 같이 작성
+            예) /board/detail/1
+        */}
+      </p>
+
+      <button onClick={ () => {
+        navigate("/test1", { state : {userId : "user01", userName : "홍길동"} });
+      } } >요청 시 전달값 넘겨보기1</button>
+
+      <button onClick={ () => {
+        navigate("/test2/1"); // Path Variable 방식
+      }}>요청 시 전달값 넘겨보기2</button>
+
+      <br/>
+
+      <Routes>
+        <Route path="/test1" element={ <TestComponent1 /> } />
+        <Route path="/test2/:noticeNo" element={ <TestComponent2 /> } />
+        {/* Path Variable 상의 요청 시 전달값은 /:변수명 으로 표현함 */}
+      </Routes>
+
+      {/*
+        참고)
+        - 우리는 그동안
+          State 를 사용할 경우 useState 함수,
+          navigete 를 사용할 경우 useNavigete 함수,
+          location 을 사용할 경우 useLocation 함수
+          params 를 사용할 경우 useParams 함수 를 이용했음!!
+          (리액트에서 기본적으로 제공해주는 내장함수임)
+
+        - 리액트에서 기본적으로 제공해주는 내장함수들은 함수명이 대게 useXxxxx 임!!
+          이 리액트 기본 제공 내장함수들을 Hook (훅) 이라고 부른다!!
+      */}
 
     </div>
   )

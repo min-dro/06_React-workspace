@@ -1,26 +1,32 @@
 import { useState } from "react";
 
-function MemberEnrollFormComponent() {
+function MemberEnrollFormComponent(props) {
 
     // 실행할 구문
-    const [user, setUser] = useState({ userId : "", userPwd : "", checkPwd : "", userName : "", email : "", gender : "" });
+    const [inputValue, setInputValue] = useState({ userId : "", userPwd : "", checkPwd : "", userName : "", email : "", gender : "" });
 
     const handleUser = e => {
 
-        let newUser = {...user};
+        let newInput = {...inputValue};
 
-        newUser[e.target.name] = e.target.value;
+        newInput[e.target.name] = e.target.value;
         
-        setUser(newUser);
+        setInputValue(newInput);
     };
 
     const insertUser = e => {
         
         e.preventDefault();
-        if(user.userPwd == user.checkPwd) {
-            alert("회원가입에 성공했습니다.");
-        } else {
+        if(inputValue.userPwd != inputValue.checkPwd) {
             alert("비밀번호와 비밀번호 확인이 다릅니다.");
+        } else if(inputValue.userId == "" || inputValue.userPwd == ""){
+            alert("아이디 또는 비밀번호가 비어있습니다.");
+        } else {
+            alert("회원가입에 성공했습니다.");
+            let newUser = [...props.user];
+            newUser.push(inputValue);
+            props.setUser(newUser);
+            setInputValue({ userId : "", userPwd : "", checkPwd : "", userName : "", email : "", gender : "" });
         }
         
     }
@@ -36,38 +42,38 @@ function MemberEnrollFormComponent() {
                         <tr>
                             <th>아이디</th>
                             <td>
-                                <input type="text" name="userId" value={ user.userId } onChange={ handleUser } />
+                                <input type="text" name="userId" value={ inputValue.userId } onChange={ handleUser } />
                             </td>
                         </tr>
                         <tr>
                             <th>비밀번호</th>
                             <td>
-                                <input type="password" name="userPwd" value={ user.userPwd } onChange={ handleUser } />
+                                <input type="password" name="userPwd" value={ inputValue.userPwd } onChange={ handleUser } />
                             </td>
                         </tr>
                         <tr>
                             <th>비밀번호 확인</th>
                             <td>
-                                <input type="password" name="checkPwd" value={ user.checkPwd } onChange={ handleUser } />
+                                <input type="password" name="checkPwd" value={ inputValue.checkPwd } onChange={ handleUser } />
                             </td>
                         </tr>
                         <tr>
                             <th>이름</th>
                             <td>
-                                <input type="text" name="userName" value={ user.userName } onChange={ handleUser } />
+                                <input type="text" name="userName" value={ inputValue.userName } onChange={ handleUser } />
                             </td>
                         </tr>
                         <tr>
                             <th>이메일</th>
                             <td>
-                                <input type="email" name="email" value={ user.email } onChange={ handleUser } />
+                                <input type="email" name="email" value={ inputValue.email } onChange={ handleUser } />
                             </td>
                         </tr>
                         <tr>
                             <th>성별</th>
                             <td>
-                                <input type="radio" name="gender" id="M" value="M" checked={ user.gender == "M" } onChange={ handleUser } /><label htmlFor="M">남자</label>
-                                <input type="radio" name="gender" id="F" value="F" checked={ user.gender == "F" } onChange={ handleUser } /><label htmlFor="F">여자</label>
+                                <input type="radio" name="gender" id="M" value="M" checked={ inputValue.gender == "M" } onChange={ handleUser } /><label htmlFor="M">남자</label>
+                                <input type="radio" name="gender" id="F" value="F" checked={ inputValue.gender == "F" } onChange={ handleUser } /><label htmlFor="F">여자</label>
                             </td>
                         </tr>
                     </tbody>

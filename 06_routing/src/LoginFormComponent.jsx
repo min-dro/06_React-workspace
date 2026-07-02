@@ -1,21 +1,28 @@
 import { useState } from "react";
 
-function LoginForComponent() {
+function LoginForComponent(props) {
 
     // 실행할 구문
-    const [user, setUser] = useState({ userId : "", userPwd : "" })
+    const [inputValue, setInputValue] = useState({ userId : "", userPwd : "" })
 
     const handleUser = e => {
 
-        let loginUser = {...user};
+        let loginUser = {...inputValue};
         loginUser[e.target.name] = e.target.value;
-        setUser(loginUser);
+        setInputValue(loginUser);
 
     }
 
     const login = e => {
         e.preventDefault();
-        alert("로그인에 성공했습니다.");
+        for(let i = 0; i < props.user.length; i++) {
+            if(props.user[i].userId == inputValue.userId && props.user[i].userPwd == inputValue.userPwd){
+                alert("로그인에 성공했습니다.");
+                return true;
+            }
+        }
+        alert("로그인에 실패했습니다.");
+        return false;
     }
 
     // return 구문
@@ -29,13 +36,13 @@ function LoginForComponent() {
                         <tr>
                             <th>아이디</th>
                             <td>
-                                <input type="text" name="userId" value={ user.userId }  onChange={ handleUser } />
+                                <input type="text" name="userId" value={ inputValue.userId }  onChange={ handleUser } />
                             </td>
                         </tr>
                         <tr>
                             <th>비밀번호</th>
                             <td>
-                                <input type="password" name="userPwd" value={ user.userPwd } onChange={ handleUser } />
+                                <input type="password" name="userPwd" value={ inputValue.userPwd } onChange={ handleUser } />
                             </td>
                         </tr>
                     </tbody>
