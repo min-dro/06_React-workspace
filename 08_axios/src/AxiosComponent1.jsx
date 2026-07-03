@@ -163,7 +163,6 @@ function AxiosComponent1() {
             // > axios 요청도 계속 반복적으로 날려지게 된다!!
             // > setter 함수가 딱 한번만 실행되도록 유도해야 한다!!
 
-
         }).catch(() => {
 
             console.log("ajax 통신 실패!");
