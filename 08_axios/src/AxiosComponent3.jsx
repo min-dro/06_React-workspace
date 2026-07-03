@@ -69,7 +69,7 @@ function AxiosComponent3() {
 
             } catch(error) {
 
-                console.log("부산 맛집 조회용 ajax 통신 실패!");
+                console.log("부산 맛집 조회용 ajax 통신 실패! : " + error);
             }
         };
 

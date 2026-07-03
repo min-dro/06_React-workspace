@@ -82,7 +82,7 @@ function AxiosComponent2() {
 
             } catch(error) {
 
-                console.log("ajax 통신 실패! : ");
+                console.log("ajax 통신 실패! : " + error);
             }
         };
 

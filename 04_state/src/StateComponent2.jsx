@@ -74,7 +74,7 @@ function StateComponent2() {
     */
 
     // h3 요소를 클릭했을 때 실행할 함수
-    const changeColor = e => {
+    const changeColor = () => {
 
         // h3 요소의 className 속성값을 "Orange" 로 바꾸기
         // 방법1)

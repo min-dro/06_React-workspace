@@ -27,7 +27,7 @@ const useCountStore = create((set) => ({
     // > 내가 필요한 만큼 만들어거 쓸 수 있다!!
     increment : () => (set((state) => ({ count : state.count + 1 }))),
     decrement : () => (set((state) => ({ count : state.count - 1 }))),
-    reset     : () => (set((state) => ({ count : 0 })))
+    reset     : () => (set(() => ({ count : 0 })))
 }));
 
 // 내보내기

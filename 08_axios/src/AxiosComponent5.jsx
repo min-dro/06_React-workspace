@@ -51,7 +51,7 @@ function AxiosComponent5() {
 
             } catch(error) {
 
-                console.log("회원 목록 조회용 ajax 통신 실패!");
+                console.log("회원 목록 조회용 ajax 통신 실패! : " + error);
             }
         };
 

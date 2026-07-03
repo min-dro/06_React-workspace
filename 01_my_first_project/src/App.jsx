@@ -1,7 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 
 // App 이라는 js 선언적 함수 (function) - 컴포넌트 
@@ -58,7 +54,7 @@ function App() {
         - 자바스크립트에서 기존의 한개의 html 문서를 나타내는 객체가 DOM (Document) <br></br>
 
         - 기존 웹페이지 구현 방식에서는 필요한 화면 html (내지 jsp) 문서들이 다량이기 때문에
-          화면이 변경될 때 마다 새로운 html 문서들이 "응답, 리로드" ehldj
+          화면이 변경될 때 마다 새로운 html 문서들이 "응답, 리로드" 되어
           매번 화면이 깜빡거리면서 처음부터 그려지게 된다!! <br></br>
 
         - Virtual DOM 은
@@ -98,6 +94,7 @@ function App() {
             화면에 출력하고 싶을 경우 쓰인다!! (표현식, 출력식 역할)
           - 즉, 기존 jsp 의 <%= 변수명 %> 과 같은 역할이다.
       */
+        // eslint-disable-next-line react-hooks/purity
         Math.random()
       }
 

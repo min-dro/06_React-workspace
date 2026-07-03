@@ -40,12 +40,12 @@ class MyComponent4 extends Component {
 
         // return 구문 - JSX 형식으로 화면 구성
         return (
-            <h2 style={ styleObj }>
-                클래스형 컴포넌트 입니다!!
+            <div style={ styleObj }>
+                <h2>클래스형 컴포넌트 입니다!!</h2>
                 <br/>
                 <h3>제목 : { boardTitle }</h3>
                 <h4>내용 : { boardContent }</h4>
-            </h2>
+            </div>
         );
     }
 }

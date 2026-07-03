@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/immutability */
 function MemberEnrollFormComponent() {
 
     // 실행된 구문

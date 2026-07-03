@@ -1,8 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-
 import './App.css'
 // > .css 파일 또한 import 구문으로 가져온다!!
 //   App 컴포넌트에서 호출에서 가져다 쓰는 자식컴포넌트들에도 해당 스타일이 적용됨!!
