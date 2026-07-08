@@ -157,9 +157,11 @@ function MemberEnrollFormComponent() {
                                 <input type="password" id="userPwd" onBlur={ checkPwd1 } /><br/>
                             </td>
                         </tr>
+                        <tr>
                             <td colSpan="2">
                                 <span id="result2"></span>
                             </td>
+                        </tr>
                         <tr>
                             <th>비밀번호</th>
                             <td>

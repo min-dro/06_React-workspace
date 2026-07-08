@@ -13,7 +13,7 @@ function App() {
   return (
     <div>
 
-      <h1>Controlled Component (제어 컴폰너트)</h1>
+      <h1>Controlled Component (제어 컴포너트)</h1>
 
       <p>
         - React 의 State 변수가 입력양식요소 (input, textarea, select 등) 의 입력값을

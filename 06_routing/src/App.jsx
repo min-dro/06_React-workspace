@@ -64,7 +64,7 @@ function App() {
     // console.log("잘 클릭되나?");
 
     // 리액트 방식
-    navigate("/member/loginform");
+    navigate("/member/loginForm");
     // > URL 주소가 이동되고, 이때 화면이 깜빡거리지 않음!!
   };
 
@@ -124,6 +124,7 @@ function App() {
         <Route path="/detail1" element={ <div>나는 상세페이지1이야</div> }></Route>
         <Route path="/detail2" element={ <div>나는 상세페이지2야</div> }></Route>
         <Route path="/detail3" element={ <div>나는 상세페이지3이야</div> }></Route>
+        <Route path="*" element={null} />
       </Routes>
 
       <br/>
@@ -190,6 +191,7 @@ function App() {
       <Routes>
         <Route path="/member/enrollForm" element={ <MemberEnrollFormComponent user={ user } setUser={ setUser } /> } />
         <Route path="/member/loginForm" element={ <LoginFormComponent user={ user } /> } />
+        <Route path="*" element={null} />
       </Routes>
 
       <br/>
@@ -233,6 +235,7 @@ function App() {
         <Route path="/test1" element={ <TestComponent1 /> } />
         <Route path="/test2/:noticeNo" element={ <TestComponent2 /> } />
         {/* Path Variable 상의 요청 시 전달값은 /:변수명 으로 표현함 */}
+        <Route path="*" element={null} />
       </Routes>
 
       {/*
